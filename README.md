@@ -1,1 +1,1 @@
-# fullstack-eCommerce
+# eCommerce Project - Spring boot Backend and Angular Frontend
