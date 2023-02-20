@@ -8,7 +8,7 @@ import {Product} from "../common/product";
 })
 export class ProductService {
 
-    private baseUrl = 'http://localhost:8082/api/products';
+    private baseUrl = 'http://localhost:8082/api/products?size=100';
 
     constructor(private httpClient: HttpClient) {
     }
