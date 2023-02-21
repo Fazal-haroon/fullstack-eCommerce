@@ -1037,4 +1037,8 @@ footer ul li{
     }
 }
 
+.active-link {
+    font-weight: bold;
+}
+
 
