@@ -54,7 +54,7 @@ export class ProductListComponent implements OnInit {
         // )
 
         //now get the products for the given category id
-        this.productService.getProductListBySearch(this.currentCategoryId).subscribe(
+        this.productService.getProductListBySearchCategoryId(this.currentCategoryId).subscribe(
             data => {
                 this.products = data;
             }
