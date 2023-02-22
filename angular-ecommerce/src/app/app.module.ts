@@ -10,6 +10,8 @@ import { ProductCategoryMenuComponent } from './components/product-category-menu
 import { SearchComponent } from './components/search/search.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +23,8 @@ import { ProductDetailsComponent } from './components/product-details/product-de
   imports: [
     BrowserModule,
       HttpClientModule,
-      AppRoutingModule
+      AppRoutingModule,
+      NgbModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]
