@@ -17,3 +17,15 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     Page<Product> findByNameContaining(@Param("name") String name, Pageable pageable);
 }
+
+    /* //Pagination is useful for handling large amounts of data
+    //By default, Spring Data Rest returns: 20elements
+    //we can customize this by passing in parameters (page and size)
+    //the response metadata has valuable information
+    "page": {
+        "size": 5, //size of this page
+        "totalElements": 100, //Grand total of All elements in the DB. But we are not returning all of the elements. Just the "count" for informational purpose only.
+        "totalPages": 20, //total pages available
+        "number": 0 //current page number, Remember: Pages are 0-based first page is at position 0 and Second page is at position 1
+    }
+    */
