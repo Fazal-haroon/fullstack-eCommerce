@@ -20,6 +20,8 @@ export class ProductListComponent implements OnInit {
     thePageSize: number = 5;
     theTotalElements: number = 0;
 
+    previousKeyword: string = "";
+
     constructor(private productService: ProductService, private route: ActivatedRoute) {
     }
 
@@ -73,13 +75,8 @@ export class ProductListComponent implements OnInit {
         console.log(`currentCategoryId=${this.currentCategoryId}, thePageNumber=${this.thePageNumber}`);
 
         //now get the products for the given category id
-        this.productService.getProductListPaginate(this.thePageNumber - 1, this.thePageSize, this.currentCategoryId).subscribe(
-            data => {
-                this.products = data._embedded.products;
-                this.thePageNumber = data.page.number + 1;
-                this.thePageSize = data.page.size;
-                this.theTotalElements = data.page.totalElements;
-            }
+        this.productService.getProductListBySearchCategoryIdPaginate(this.thePageNumber - 1, this.thePageSize, this.currentCategoryId).subscribe(
+            this.processResult()
         )
     }
 
@@ -87,17 +84,39 @@ export class ProductListComponent implements OnInit {
     handleSearchProducts() {
         const theKeyword: string = this.route.snapshot.paramMap.get('keyword')!;
 
-        //now search for the products using keyword
-        this.productService.searchProducts(theKeyword).subscribe(
-            data => {
-                this.products = data;
-            }
+        //if we have different keyword than pervious
+        //then set thePageNumber to 1
+        if (this.previousKeyword != theKeyword) {
+            this.thePageNumber = 1
+        }
+
+        this.previousKeyword = theKeyword;
+
+        console.log(`keyword=${theKeyword}, thePageNumber=${this.thePageNumber}`)
+
+        this.productService.searchProductsPaginate(this.thePageNumber -1, this.thePageSize, theKeyword).subscribe(
+            this.processResult()
         )
+        // //now search for the products using keyword
+        // this.productService.searchProducts(theKeyword).subscribe(
+        //     data => {
+        //         this.products = data;
+        //     }
+        // );
     }
 
     updatePageSize(pageSize: string) {
         this.thePageSize = +pageSize;
         this.thePageNumber = 1;
         this.listProducts();
+    }
+
+    processResult() {
+        return (data: any) => {
+            this.products = data._embedded.products;
+            this.thePageNumber = data.page.number + 1;
+            this.thePageSize = data.page.size;
+            this.theTotalElements = data.page.totalElements;
+        }
     }
 }
