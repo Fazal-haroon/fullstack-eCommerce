@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Product} from "../../common/product";
 import {ProductService} from "../../services/product.service";
 import {ActivatedRoute} from "@angular/router";
+import {CartService} from "../../services/cart.service";
+import {CartItem} from "../../common/cart-item";
 
 @Component({
   selector: 'app-product-details',
@@ -12,7 +14,7 @@ export class ProductDetailsComponent implements OnInit{
 
   product!: Product; //The ! is the non-null assertion operator. Tells TypesScript compiler to suspend strict null and undefined checks for a property.
 
-  constructor(private productService: ProductService, private route: ActivatedRoute) {
+  constructor(private productService: ProductService, private cartService: CartService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -31,4 +33,10 @@ export class ProductDetailsComponent implements OnInit{
         }
     )
   }
+
+    addToCart() {
+      console.log(`Adding to cart: ${this.product.name}, ${this.product.unitPrice}`)
+      const theCartItem = new CartItem(this.product);
+      this.cartService.addToCart(theCartItem);
+    }
 }
