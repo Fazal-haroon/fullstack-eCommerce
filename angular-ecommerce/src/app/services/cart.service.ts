@@ -74,4 +74,54 @@ export class CartService {
         console.log(`totalPrice: ${totalPriceValue.toFixed(2)}, totalQuantity: ${totalQuantityValue}`) //two digits after decimal 124.98
         console.log('----------')
     }
+
+    /*decrementCartQuantity(theCartItem: CartItem) {
+        let alreadyExistsInCart: boolean = false;
+        let existingCartItem: CartItem = undefined;
+
+        if (this.cartItems.length > 0) {
+            //find the item in the cart based on item id
+            /!*for(let tempCartItem of this.cartItems){
+              if(tempCartItem.id === theCartItem.id){
+                existingCartItem = tempCartItem;
+                break;
+              }
+            }*!/
+            existingCartItem = this.cartItems.find(tempCartItem => tempCartItem.id === theCartItem.id); //returns first element that passes else returns undefined, executes test for each element in the array until test passes
+            //check if we found it
+            alreadyExistsInCart = (existingCartItem != undefined);
+        }
+
+        if (alreadyExistsInCart) {
+            //increment the quantity
+            existingCartItem.quantity--;
+        } else {
+            //just add the item to the array
+            this.cartItems.push(theCartItem);
+        }
+
+        //compute cart total price and total quantity
+        this.computeCartTotals();
+    }*/
+
+
+    decrementCartQuantity(theCartItem: CartItem) {
+        theCartItem.quantity--;
+        if(theCartItem.quantity === 0){
+            this.remove(theCartItem);
+        }else {
+            this.computeCartTotals();
+        }
+    }
+
+    remove(theCartItem: CartItem) {
+        //get index of item in the array
+        const itemIndex = this.cartItems.findIndex(tempCartItem => tempCartItem.id === theCartItem.id);
+
+        //if found, remove the item from the array at the given index
+        if(itemIndex > -1){
+            this.cartItems.splice(itemIndex, 1);
+            this.computeCartTotals();
+        }
+    }
 }
