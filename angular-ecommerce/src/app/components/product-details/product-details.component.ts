@@ -6,37 +6,37 @@ import {CartService} from "../../services/cart.service";
 import {CartItem} from "../../common/cart-item";
 
 @Component({
-  selector: 'app-product-details',
-  templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.css']
+    selector: 'app-product-details',
+    templateUrl: './product-details.component.html',
+    styleUrls: ['./product-details.component.css']
 })
-export class ProductDetailsComponent implements OnInit{
+export class ProductDetailsComponent implements OnInit {
 
-  product!: Product; //The ! is the non-null assertion operator. Tells TypesScript compiler to suspend strict null and undefined checks for a property.
+    product!: Product; //The ! is the non-null assertion operator. Tells TypesScript compiler to suspend strict null and undefined checks for a property.
 
-  constructor(private productService: ProductService, private cartService: CartService, private route: ActivatedRoute) {
-  }
+    constructor(private productService: ProductService, private cartService: CartService, private route: ActivatedRoute) {
+    }
 
-  ngOnInit(): void {
-    this.route.paramMap.subscribe(() => {
-      this.handleProductDetails();
-    })
-  }
+    ngOnInit(): void {
+        this.route.paramMap.subscribe(() => {
+            this.handleProductDetails();
+        })
+    }
 
-  private handleProductDetails() {
-    // get the "id" param string. convert string to a number using the "+" symbol
-    const theProductId: number = +this.route.snapshot.paramMap.get('id')!;
+    private handleProductDetails() {
+        // get the "id" param string. convert string to a number using the "+" symbol
+        const theProductId: number = +this.route.snapshot.paramMap.get('id')!;
 
-    this.productService.getProductDetails(theProductId).subscribe(
-        data => {
-          this.product = data;
-        }
-    )
-  }
+        this.productService.getProductDetails(theProductId).subscribe(
+            data => {
+                this.product = data;
+            }
+        )
+    }
 
     addToCart() {
-      console.log(`Adding to cart: ${this.product.name}, ${this.product.unitPrice}`)
-      const theCartItem = new CartItem(this.product);
-      this.cartService.addToCart(theCartItem);
+        console.log(`Adding to cart: ${this.product.name}, ${this.product.unitPrice}`)
+        const theCartItem = new CartItem(this.product);
+        this.cartService.addToCart(theCartItem);
     }
 }
