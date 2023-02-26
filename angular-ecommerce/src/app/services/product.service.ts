@@ -10,6 +10,7 @@ import {ProductCategory} from "../common/product-category";
 export class ProductService {
 
     private baseUrl = 'http://localhost:8082/api';
+
     // private baseUrl = 'http://localhost:8082/api/products?size=100';
 
     constructor(private httpClient: HttpClient) {
@@ -37,13 +38,13 @@ export class ProductService {
         )
     }
 
-    searchProducts(theKeyword: string) : Observable<Product[]> {
+    searchProducts(theKeyword: string): Observable<Product[]> {
         return this.httpClient.get<GetResponseProducts>(`${this.baseUrl}/products/search/findByNameContaining?name=${theKeyword}`).pipe(
             map(response => response._embedded.products)
         )
     }
 
-    searchProductsPaginate(thePage: number, thePageSize: number, theKeyword: string) : Observable<GetResponseProducts> {
+    searchProductsPaginate(thePage: number, thePageSize: number, theKeyword: string): Observable<GetResponseProducts> {
         return this.httpClient.get<GetResponseProducts>(`${this.baseUrl}/products/search/findByNameContaining?name=${theKeyword}&page=${thePage}&size=${thePageSize}`);
     }
 

@@ -37,7 +37,7 @@ export class ProductListComponent implements OnInit {
 
         this.searchMode = this.route.snapshot.paramMap.has('keyword');
 
-        if(this.searchMode){
+        if (this.searchMode) {
             this.handleSearchProducts();
         } else {
             this.handleListProducts();
@@ -49,7 +49,7 @@ export class ProductListComponent implements OnInit {
         // check if "id" parameter is available
         const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id')
 
-        if(hasCategoryId){
+        if (hasCategoryId) {
             //get the "id" param string, convert string to a number using the "+" symbol
             this.currentCategoryId = +this.route.snapshot.paramMap.get('id')!;
         } else {
@@ -70,7 +70,7 @@ export class ProductListComponent implements OnInit {
             }
         )*/
 
-        if(this.previousCategoryId != this.currentCategoryId){
+        if (this.previousCategoryId != this.currentCategoryId) {
             this.thePageNumber = 1;
         }
         this.previousCategoryId = this.currentCategoryId;
@@ -96,7 +96,7 @@ export class ProductListComponent implements OnInit {
 
         console.log(`keyword=${theKeyword}, thePageNumber=${this.thePageNumber}`)
 
-        this.productService.searchProductsPaginate(this.thePageNumber -1, this.thePageSize, theKeyword).subscribe(
+        this.productService.searchProductsPaginate(this.thePageNumber - 1, this.thePageSize, theKeyword).subscribe(
             this.processResult()
         )
         // //now search for the products using keyword
