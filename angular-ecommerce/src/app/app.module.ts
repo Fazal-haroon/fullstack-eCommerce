@@ -14,6 +14,7 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {CartStatusComponent} from './components/cart-status/cart-status.component';
 import {CartDetailsComponent} from './components/cart-details/cart-details.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
     declarations: [
@@ -30,7 +31,8 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
         BrowserModule,
         HttpClientModule,
         AppRoutingModule,
-        NgbModule
+        NgbModule,
+        ReactiveFormsModule
     ],
     providers: [ProductService],
     bootstrap: [AppComponent]
