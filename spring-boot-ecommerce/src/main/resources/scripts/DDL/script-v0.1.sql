@@ -38,3 +38,32 @@ CREATE TABLE IF NOT EXISTS `full-stack-ecommerce`.`product` (
     )
     ENGINE=InnoDB
     AUTO_INCREMENT = 1;
+
+-- -----------------------------------------------------
+-- Table `full-stack-ecommerce`.`countries-and-states`
+-- -----------------------------------------------------
+USE `full-stack-ecommerce`;
+-- -----------------------------------------------------
+-- Table `full-stack-ecommerce`.`country`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `country`;
+
+CREATE TABLE `country` (
+                           `id` smallint unsigned NOT NULL,
+                           `code` varchar(2) DEFAULT NULL,
+                           `name` varchar(255) DEFAULT NULL,
+                           PRIMARY KEY (`id`)
+) ENGINE=InnoDB;
+-- -----------------------------------------------------
+-- Table `full-stack-ecommerce`.`state`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `state`;
+
+CREATE TABLE `state` (
+                         `id` smallint unsigned NOT NULL AUTO_INCREMENT,
+                         `name` varchar(255) DEFAULT NULL,
+                         `country_id` smallint unsigned NOT NULL,
+                         PRIMARY KEY (`id`),
+                         KEY `fk_country` (`country_id`),
+                         CONSTRAINT `fk_country` FOREIGN KEY (`country_id`) REFERENCES `country` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1;
