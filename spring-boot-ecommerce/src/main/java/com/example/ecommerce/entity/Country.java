@@ -1,5 +1,6 @@
 package com.example.ecommerce.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,5 +25,6 @@ public class Country {
 
     // Set up one-to-many with states
     @OneToMany(mappedBy = "country") //One country has many states
+    @JsonIgnore //will ignore the states
     private List<State> states;
 }
