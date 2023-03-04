@@ -16,16 +16,12 @@ export class CheckoutComponent implements OnInit{
   totalPrice: number = 0;
   totalQuantity: number = 0;
 
-  billingAddressStates: any;
-
-  shippingAddressStates: any;
-
   creditCardYears: number[] = [];
   creditCardMonths: number[] = [];
 
   countries: Country[] = [];
-  shippingAddressStatesList: State[] = [];
-  billingAddressStatesList: State[] = [];
+  shippingAddressStates: State[] = [];
+  billingAddressStates: State[] = [];
 
   constructor(private formBuilder: FormBuilder, private shopFormService: ShopFormService) { // Inject our form service
   }
@@ -94,11 +90,14 @@ export class CheckoutComponent implements OnInit{
     console.log("Handling the submit button");
     console.log(this.checkoutFormGroup.get('customer').value)
     console.log("The email address is " + this.checkoutFormGroup.get('customer').value.email)
+    console.log("The shipping address country is " + this.checkoutFormGroup.get('shippingAddress').value.country.name)
+    console.log("The shipping address state is " + this.checkoutFormGroup.get('shippingAddress').value.state.name)
   }
 
   copyShippingAddressToBillingAddress(event) {
     if (event.target.checked){
       this.checkoutFormGroup.controls['billingAddress'].setValue(this.checkoutFormGroup.controls['shippingAddress'].value);
+      //Bug fix for states
       this.billingAddressStates = this.shippingAddressStates;
     } else {
       this.checkoutFormGroup.controls['billingAddress'].reset();
@@ -143,9 +142,9 @@ export class CheckoutComponent implements OnInit{
         data => {
             console.log("Retrieved countries: " + JSON.stringify(data));
           if (shippingAddress === 'shippingAddress') {
-            this.shippingAddressStatesList = data
+            this.shippingAddressStates = data
           } else {
-            this.billingAddressStatesList = data
+            this.billingAddressStates = data
           }
 
           //select first item by default
