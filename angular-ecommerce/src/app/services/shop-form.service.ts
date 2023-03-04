@@ -9,8 +9,8 @@ import {State} from "../common/state"; // rxjs: Reactive JavaScript
 })
 export class ShopFormService {
 
-  private countriesUrl = 'http://localhost:8080/api/countries';
-  private statesUrl = 'http://localhost:8080/api/states';
+  private countriesUrl = 'http://localhost:8082/api/countries';
+  private statesUrl = 'http://localhost:8082/api/states';
 
   constructor(private httpClient: HttpClient) { }
 
