@@ -88,6 +88,11 @@ export class CheckoutComponent implements OnInit{
 
   onSubmit(){
     console.log("Handling the submit button");
+
+    if (this.checkoutFormGroup.invalid){
+      this.checkoutFormGroup.markAllAsTouched(); //Touching all fields triggers the display of the error messages
+    }
+
     console.log(this.checkoutFormGroup.get('customer').value)
     console.log("The email address is " + this.checkoutFormGroup.get('customer').value.email)
     console.log("The shipping address country is " + this.checkoutFormGroup.get('shippingAddress').value.country.name)
@@ -152,4 +157,20 @@ export class CheckoutComponent implements OnInit{
         }
     )
   }
+
+  get getFirstName() {
+    return this.checkoutFormGroup.get('customer.firstName');
+  }
+
+
+  get getLastName() {
+    return this.checkoutFormGroup.get('customer.lastName');
+  }
+
+
+  get getEmail() {
+    return this.checkoutFormGroup.get('customer.email');
+  }
+
+
 }
