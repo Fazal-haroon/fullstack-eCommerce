@@ -12,7 +12,7 @@
                                 <input formControlName="firstName" type="text"/>
                                 <div *ngIf="getFirstName.invalid && (getFirstName.dirty || getFirstName.touched)"
                                      class="alert alert-danger mt-1">
-                                    <div *ngIf="getFirstName.errors['required']">
+                                    <div *ngIf="getFirstName.errors['required'] || getFirstName.errors['notOnlyWhitespace']">
                                         First Name is Required
                                     </div>
                                     <div *ngIf="getFirstName.errors['minlength']">
@@ -30,8 +30,8 @@
 
                                 <div *ngIf="getLastName.invalid && (getLastName.dirty || getLastName.touched)"
                                      class="alert alert-danger mt-1">
-                                    <div *ngIf="getLastName.errors['required']">
-                                        Last Name is Required
+                                    <div *ngIf="getLastName.errors['required'] || getLastName.errors['notOnlyWhitespace']">
+                                        First Name is Required
                                     </div>
                                     <div *ngIf="getLastName.errors['minlength']">
                                         Last Name must be at least 2 characters long
