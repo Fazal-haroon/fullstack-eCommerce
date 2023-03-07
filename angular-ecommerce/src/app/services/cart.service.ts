@@ -12,6 +12,12 @@ export class CartService {
     totalPrice: Subject<number> = new Subject<number>(); //Subject is a subclass of Observable,
     //We can use Subject to publish events in our code. The event will be sent to all the subscribers.
     totalQuantity: Subject<number> = new Subject<number>();
+    //Subject: Does not keep a buffer of previous events
+    // Subscriber only receives new events after they are subscribed
+    //ReplaySubject: Has a buffer of all previous events
+    // Once subscribed, subscriber receives a replay of all previous events
+    //BehaviorSubject: Has a buffer of the last event
+    // Once subscribed, subscriber receives the latest event sent prior to subscribing
 
     constructor() {
     }
