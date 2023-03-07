@@ -4,6 +4,7 @@ import {ShopFormService} from "../../services/shop-form.service";
 import {Country} from "../../common/country";
 import {State} from "../../common/state";
 import {ShopValidators} from "../../validators/shop-validators";
+import {CartService} from "../../services/cart.service";
 
 @Component({
   selector: 'app-checkout',
@@ -24,7 +25,7 @@ export class CheckoutComponent implements OnInit{
   shippingAddressStates: State[] = [];
   billingAddressStates: State[] = [];
 
-  constructor(private formBuilder: FormBuilder, private shopFormService: ShopFormService) { // Inject our form service
+  constructor(private formBuilder: FormBuilder, private shopFormService: ShopFormService, private cartService: CartService) { // Inject our form service
   }
 
   ngOnInit(): void {
