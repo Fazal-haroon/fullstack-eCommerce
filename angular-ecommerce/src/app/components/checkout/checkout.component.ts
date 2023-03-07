@@ -29,6 +29,9 @@ export class CheckoutComponent implements OnInit{
   }
 
   ngOnInit(): void {
+
+    this.reviewCartDetails();
+
     this.checkoutFormGroup = this.formBuilder.group({
       customer: this.formBuilder.group({
         firstName: new FormControl('', [Validators.required, Validators.minLength(2), ShopValidators.notOnlyWhitespace]),
@@ -193,4 +196,15 @@ export class CheckoutComponent implements OnInit{
 
   get getCreditCardSecurityCode() { return this.checkoutFormGroup.get('creditCard.securityCode'); }
 
+  reviewCartDetails() {
+    // subscribe to cartService.totalQuantity
+    this.cartService.totalQuantity.subscribe(
+        totalQuantity => this.totalQuantity = totalQuantity
+    )
+
+    //subscribe to cartService.totalPrice
+    this.cartService.totalPrice.subscribe(
+        totalPrice => this.totalPrice = totalPrice
+    )
+  }
 }

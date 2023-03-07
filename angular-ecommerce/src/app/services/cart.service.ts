@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {CartItem} from "../common/cart-item";
-import {Subject} from "rxjs";
+import {BehaviorSubject, Subject} from "rxjs";
 
 @Injectable({
     providedIn: 'root'
@@ -9,9 +9,9 @@ export class CartService {
 
     cartItems: CartItem[] = [];
 
-    totalPrice: Subject<number> = new Subject<number>(); //Subject is a subclass of Observable,
+    totalPrice: Subject<number> = new BehaviorSubject<number>(0); //Subject is a subclass of Observable,
     //We can use Subject to publish events in our code. The event will be sent to all the subscribers.
-    totalQuantity: Subject<number> = new Subject<number>();
+    totalQuantity: Subject<number> = new BehaviorSubject<number>(0);
     //Subject: Does not keep a buffer of previous events
     // Subscriber only receives new events after they are subscribed
     //ReplaySubject: Has a buffer of all previous events
