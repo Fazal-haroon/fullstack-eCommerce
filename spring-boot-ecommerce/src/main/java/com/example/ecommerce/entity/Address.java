@@ -30,7 +30,6 @@ public class Address {
     @Column(name = "zip_code")
     private String zipCode;
 
-    //todo: Order
     @OneToOne
     @PrimaryKeyJoinColumn //Join using primary keys by default keys have same name
     private Order order;
