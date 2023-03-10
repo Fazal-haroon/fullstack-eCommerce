@@ -5,6 +5,8 @@ import {Country} from "../../common/country";
 import {State} from "../../common/state";
 import {ShopValidators} from "../../validators/shop-validators";
 import {CartService} from "../../services/cart.service";
+import {CheckoutService} from "../../services/checkout.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-checkout',
@@ -25,7 +27,7 @@ export class CheckoutComponent implements OnInit{
   shippingAddressStates: State[] = [];
   billingAddressStates: State[] = [];
 
-  constructor(private formBuilder: FormBuilder, private shopFormService: ShopFormService, private cartService: CartService) { // Inject our form service
+  constructor(private formBuilder: FormBuilder, private shopFormService: ShopFormService, private cartService: CartService, private checkoutService: CheckoutService, private router: Router) { // Inject our form service
   }
 
   ngOnInit(): void {
@@ -96,12 +98,32 @@ export class CheckoutComponent implements OnInit{
 
     if (this.checkoutFormGroup.invalid){
       this.checkoutFormGroup.markAllAsTouched(); //Touching all fields triggers the display of the error messages
+      return;
     }
 
-    console.log(this.checkoutFormGroup.get('customer').value)
-    console.log("The email address is " + this.checkoutFormGroup.get('customer').value.email)
-    console.log("The shipping address country is " + this.checkoutFormGroup.get('shippingAddress').value.country.name)
-    console.log("The shipping address state is " + this.checkoutFormGroup.get('shippingAddress').value.state.name)
+    //set up order
+
+    //get cart items
+
+    //create orderItems from cartItems
+
+    //set up purchase
+
+    //populate purchase -- customer
+
+    //populate purchase -- shipping address
+
+    //populate purchase -- billing address
+
+    //populate purchase -- order and orderItems
+
+    //call REST API via the CheckoutService
+
+
+    // console.log(this.checkoutFormGroup.get('customer').value)
+    // console.log("The email address is " + this.checkoutFormGroup.get('customer').value.email)
+    // console.log("The shipping address country is " + this.checkoutFormGroup.get('shippingAddress').value.country.name)
+    // console.log("The shipping address state is " + this.checkoutFormGroup.get('shippingAddress').value.state.name)
   }
 
   copyShippingAddressToBillingAddress(event) {
