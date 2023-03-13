@@ -4,10 +4,14 @@ import {ProductListComponent} from "./components/product-list/product-list.compo
 import {ProductDetailsComponent} from "./components/product-details/product-details.component";
 import {CartDetailsComponent} from "./components/cart-details/cart-details.component";
 import {CheckoutComponent} from "./components/checkout/checkout.component";
+import {OktaCallbackComponent} from "@okta/okta-angular";
+import {LoginComponent} from "./components/login/login.component";
 
 // Welcome to Route
 const routes: Routes = [
     {path: 'category/:id', component: ProductListComponent},
+    {path: 'login/callback', component: OktaCallbackComponent}, //Once the user is authenticated, they are redirected to your app. Normally you would need to parse the response and store the OAuth+OIDC tokens. The OktaCallbackComponent does this for you.
+    {path: 'login', component: LoginComponent},
     {path: 'search/:keyword', component: ProductListComponent},
     {path: 'category', component: ProductListComponent},
     {path: 'products', component: ProductListComponent},
