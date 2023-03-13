@@ -43,9 +43,10 @@ const oktaAuth = new OktaAuth(oktaConfig);
         HttpClientModule,
         AppRoutingModule,
         NgbModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        OktaAuthModule
     ],
-    providers: [ProductService],
+    providers: [ProductService, {provide: OKTA_CONFIG, useValue: {oktaAuth}}],
     bootstrap: [AppComponent]
 })
 export class AppModule {
