@@ -19,7 +19,9 @@ export class CartService {
     //BehaviorSubject: Has a buffer of the last event
     // Once subscribed, subscriber receives the latest event sent prior to subscribing
 
-    storage: Storage = sessionStorage; //Reference to web browser's session storage
+    // storage: Storage = sessionStorage; //Reference to web browser's session storage, after restart data lose
+    storage: Storage = localStorage; //use localStorage instead of sessionStorage
+    //LocalStorage: data is persisted and survives browser restarts
 
     constructor() {
         //read data from storage
@@ -30,6 +32,7 @@ export class CartService {
 
             //compute totals based on the data that is read from storage
             this.computeCartTotals();
+
         }
     }
 
@@ -79,6 +82,10 @@ export class CartService {
 
         //log cart data just for debugging purposes
         this.logCartData(totalPriceValue, totalQuantityValue);
+
+        //persist cart data
+        this.persistCartItems();
+        //sessionStorage: Once a web browser tab is closed then data is no longer available
     }
 
     private logCartData = (totalPriceValue: number, totalQuantityValue: number) => {
