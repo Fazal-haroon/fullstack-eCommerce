@@ -19,8 +19,8 @@ export class CartService {
     //BehaviorSubject: Has a buffer of the last event
     // Once subscribed, subscriber receives the latest event sent prior to subscribing
 
-    // storage: Storage = sessionStorage; //Reference to web browser's session storage, after restart data lose
-    storage: Storage = localStorage; //use localStorage instead of sessionStorage
+    storage: Storage = sessionStorage; //Reference to web browser's session storage, after restart data lose
+    // storage: Storage = localStorage; //use localStorage instead of sessionStorage
     //LocalStorage: data is persisted and survives browser restarts
 
     constructor() {
