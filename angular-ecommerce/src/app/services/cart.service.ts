@@ -19,7 +19,18 @@ export class CartService {
     //BehaviorSubject: Has a buffer of the last event
     // Once subscribed, subscriber receives the latest event sent prior to subscribing
 
+    storage: Storage = sessionStorage; //Reference to web browser's session storage
+
     constructor() {
+        //read data from storage
+        let data = JSON.parse(this.storage.getItem('cartItems')!) //Reads JSON string and converts to object
+
+        if(data != null){
+            this.cartItems = data;
+
+            //compute totals based on the data that is read from storage
+            this.computeCartTotals();
+        }
     }
 
     addToCart(theCartItem: CartItem) {
@@ -129,5 +140,9 @@ export class CartService {
             this.cartItems.splice(itemIndex, 1);
             this.computeCartTotals();
         }
+    }
+
+    persistCartItems(){
+        this.storage.setItem('cartItems', JSON.stringify(this.cartItems));
     }
 }
