@@ -2,11 +2,14 @@ export default {
 /*
     Security by https://developer.okta.com/
     User Information: dev-52538997.okta.com
+    User Information new: dev-50610299.okta.com
     Client ID(for Proof Key for Code Exchange PKCE): 0oa8oa3c5edo1hrSl5d7
+    Client ID(for Proof Key for Code Exchange PKCE) new: 0oa8pad56hOLTmKY35d7
+
 */
     oidc: {
-        clientId: '0oa8oa3c5edo1hrSl5d7',
-        issuer: 'https://dev-52538997.okta.com/oauth2/default',
+        clientId: '0oa8pad56hOLTmKY35d7',
+        issuer: 'https://dev-50610299.okta.com/oauth2/default',
         redirectUri: 'http://localhost:4200/login/callback',
         scopes: ['openid', 'profile', 'email']
     }
