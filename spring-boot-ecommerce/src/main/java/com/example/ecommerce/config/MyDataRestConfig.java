@@ -34,7 +34,7 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
     //405 - Method Not Allowed Http Method Put, Post, and Delete
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
-        HttpMethod[] theUnsupportedActions = {HttpMethod.PUT, HttpMethod.POST, HttpMethod.DELETE};
+        HttpMethod[] theUnsupportedActions = {HttpMethod.PUT, HttpMethod.POST, HttpMethod.DELETE, HttpMethod.PATCH};
 
         // disable HTTP methods for Product: PUT, POST and DELETE
         disableHttpMethods(Product.class, config, theUnsupportedActions);
