@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
-@CrossOrigin
+//@CrossOrigin
 @RepositoryRestResource(collectionResourceRel = "states", path = "states")
 public interface StateRepository extends JpaRepository<State, Integer> {
 
