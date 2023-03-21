@@ -16,8 +16,9 @@ export class OrderHistoryService {
 
     //need to build URL based on the customer email
     const orderHistoryUrl = `${this.orderUrl}/search/findByCustomerEmail?email=${theEmail}`;
+    const orderHistoryUrl2 = `${this.orderUrl}/search/findByCustomerEmailOrderByDateCreatedDesc?email=${theEmail}`;
 
-    return this.httpClient.get<GetResponseOrderHistory>(orderHistoryUrl);
+    return this.httpClient.get<GetResponseOrderHistory>(orderHistoryUrl2);
   }
 }
 
