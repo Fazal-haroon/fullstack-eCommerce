@@ -10,7 +10,7 @@ export default {
     oidc: {
         clientId: '0oa8pad56hOLTmKY35d7',
         issuer: 'https://dev-50610299.okta.com/oauth2/default',
-        redirectUri: 'http://localhost:4200/login/callback',
+        redirectUri: 'https://localhost:4200/login/callback', //since our angular app will run using https
         scopes: ['openid', 'profile', 'email']
     }
 
