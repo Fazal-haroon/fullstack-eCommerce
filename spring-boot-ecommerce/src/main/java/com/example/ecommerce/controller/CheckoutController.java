@@ -23,4 +23,11 @@ public class CheckoutController {
         PurchaseResponse purchaseResponse = checkoutService.placeOrder(purchase);
         return purchaseResponse;
     }
+
+    /*
+    * Fails b/c we are sending checkout request with HTTP POST
+    * By default CSRF is enabled CSRF performs checks on POST using Cookies
+    * Since we are not using Cookies for session tracking, CSRF says request is unauthorized
+    * We can resolve this by disabling CSRF, This technique is commonly used for REST APIs
+    * */
 }
