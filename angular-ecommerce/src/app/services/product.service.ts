@@ -9,9 +9,14 @@ import {ProductCategory} from "../common/product-category";
 })
 export class ProductService {
 
-    private baseUrl = 'http://localhost:8082/api';
+    private baseUrl = 'https://localhost:8082/api';
+    /*
+      visit: chrome://flags/
+      enable this one #allow-insecure-localhost
+      so all HTTPS localhost worked
+      */
 
-    // private baseUrl = 'http://localhost:8082/api/products?size=100';
+    // private baseUrl = 'https://localhost:8082/api/products?size=100';
 
     constructor(private httpClient: HttpClient) {
     }

@@ -8,7 +8,7 @@ import {OrderHistory} from "../common/order-history";
 })
 export class OrderHistoryService {
 
-  private orderUrl = 'http://localhost:8082/api/orders';
+  private orderUrl = 'https://localhost:8082/api/orders';
 
   constructor(private httpClient: HttpClient) { }
 
