@@ -3,13 +3,14 @@ import {HttpClient} from "@angular/common/http";
 import {map, Observable} from "rxjs";
 import {Product} from "../common/product";
 import {ProductCategory} from "../common/product-category";
+import {environment} from "../../environments/environment";
 
 @Injectable({
     providedIn: 'root'
 })
 export class ProductService {
 
-    private baseUrl = 'https://localhost:8082/api';
+    private baseUrl = environment.apiUrl;
     /*
       visit: chrome://flags/
       enable this one #allow-insecure-localhost
