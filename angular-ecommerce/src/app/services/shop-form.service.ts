@@ -2,15 +2,16 @@ import { Injectable } from '@angular/core';
 import {map, Observable, of} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {Country} from "../common/country";
-import {State} from "../common/state"; // rxjs: Reactive JavaScript
+import {State} from "../common/state";
+import {environment} from "../../environments/environment"; // rxjs: Reactive JavaScript
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShopFormService {
 
-  private countriesUrl = 'https://localhost:8082/api/countries';
-  private statesUrl = 'https://localhost:8082/api/states';
+  private countriesUrl = environment.apiUrl + '/countries';
+  private statesUrl = environment.apiUrl + '/states';
 
   constructor(private httpClient: HttpClient) { }
 
