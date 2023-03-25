@@ -1,5 +1,8 @@
-/*npm start -- --configuration=production*/
+/*
+npm start -- --configuration=production
+*/
 export const environment = {
-    production: true
+    production: false,
+    apiUrl: "https://localhost:8082/api"
 };
 
