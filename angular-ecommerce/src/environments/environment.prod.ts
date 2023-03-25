@@ -1,5 +1,5 @@
 /*
-npm start -- --configuration=production
+$ npm start -- --configuration=production
 */
 export const environment = {
     production: false,
