@@ -1,9 +1,9 @@
 package com.example.ecommerce.dto;
 
-import com.example.ecommerce.entity.Address;
-import com.example.ecommerce.entity.Customer;
-import com.example.ecommerce.entity.Order;
-import com.example.ecommerce.entity.OrderItem;
+import com.example.ecommerce.dao.Address;
+import com.example.ecommerce.dao.Customer;
+import com.example.ecommerce.dao.Order;
+import com.example.ecommerce.dao.OrderItem;
 import lombok.Data;
 
 import java.util.Set;
