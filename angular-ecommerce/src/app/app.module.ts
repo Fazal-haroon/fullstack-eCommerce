@@ -13,21 +13,21 @@ import {ProductDetailsComponent} from './components/product-details/product-deta
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {CartStatusComponent} from './components/cart-status/cart-status.component';
 import {CartDetailsComponent} from './components/cart-details/cart-details.component';
-import { CheckoutComponent } from './components/checkout/checkout.component';
+import {CheckoutComponent} from './components/checkout/checkout.component';
 import {ReactiveFormsModule} from "@angular/forms";
-import { LoginComponent } from './components/login/login.component';
-import { LoginStatusComponent } from './components/login-status/login-status.component';
+import {LoginComponent} from './components/login/login.component';
+import {LoginStatusComponent} from './components/login-status/login-status.component';
 import {
     OktaAuthModule,
     OktaCallbackComponent,
     OKTA_CONFIG
 } from '@okta/okta-angular';
 
-import { OktaAuth } from '@okta/okta-auth-js';
+import {OktaAuth} from '@okta/okta-auth-js';
 
 import myAppConfig from './config/my-app-config';
-import { MembersPageComponent } from './components/members-page/members-page.component';
-import { OrderHistoryComponent } from './components/order-history/order-history.component';
+import {MembersPageComponent} from './components/members-page/members-page.component';
+import {OrderHistoryComponent} from './components/order-history/order-history.component';
 import {AuthInterceptorService} from "./services/auth-interceptor.service";
 
 const oktaConfig = myAppConfig.oidc;
@@ -57,7 +57,7 @@ const oktaAuth = new OktaAuth(oktaConfig);
         ReactiveFormsModule,
         OktaAuthModule
     ],
-    providers: [ProductService, { provide: OKTA_CONFIG, useValue: { oktaAuth }},
+    providers: [ProductService, {provide: OKTA_CONFIG, useValue: {oktaAuth}},
         {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
     bootstrap: [AppComponent]
 })
