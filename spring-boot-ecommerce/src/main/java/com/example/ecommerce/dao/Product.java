@@ -1,4 +1,4 @@
-package com.example.ecommerce.entity;
+package com.example.ecommerce.dao;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;

@@ -1,4 +1,4 @@
-package com.example.ecommerce.entity;
+package com.example.ecommerce.dao;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
