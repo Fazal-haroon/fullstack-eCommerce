@@ -11,17 +11,28 @@ import {OktaAuth} from "@okta/okta-auth-js";
 import {OrderHistoryComponent} from "./components/order-history/order-history.component";
 
 // Welcome to Route
-function sendToLoginPage(oktaAuth: OktaAuth, injector: Injector){
+function sendToLoginPage(oktaAuth: OktaAuth, injector: Injector) {
     //Use injector to access any service available within your application
     const router = injector.get(Router);
 
     //Redirect the user to your custom login page
     router.navigate(['/login']);
 }
+
 const routes: Routes = [
     {path: 'category/:id', component: ProductListComponent},
-    {path: 'order-history', component: OrderHistoryComponent, canActivate: [OktaAuthGuard], data: {onAuthRequired: sendToLoginPage}},
-    {path: 'members', component: MembersPageComponent, canActivate: [OktaAuthGuard], data: {onAuthRequired: sendToLoginPage}},
+    {
+        path: 'order-history',
+        component: OrderHistoryComponent,
+        canActivate: [OktaAuthGuard],
+        data: {onAuthRequired: sendToLoginPage}
+    },
+    {
+        path: 'members',
+        component: MembersPageComponent,
+        canActivate: [OktaAuthGuard],
+        data: {onAuthRequired: sendToLoginPage}
+    },
     {path: 'login/callback', component: OktaCallbackComponent}, //Once the user is authenticated, they are redirected to your app. Normally you would need to parse the response and store the OAuth+OIDC tokens. The OktaCallbackComponent does this for you.
     {path: 'login', component: LoginComponent},
     {path: 'search/:keyword', component: ProductListComponent},

@@ -27,7 +27,7 @@ export class CartService {
         //read data from storage
         let data = JSON.parse(this.storage.getItem('cartItems')!) //Reads JSON string and converts to object
 
-        if(data != null){
+        if (data != null) {
             this.cartItems = data;
 
             //compute totals based on the data that is read from storage
@@ -131,9 +131,9 @@ export class CartService {
 
     decrementCartQuantity(theCartItem: CartItem) {
         theCartItem.quantity--;
-        if(theCartItem.quantity === 0){
+        if (theCartItem.quantity === 0) {
             this.remove(theCartItem);
-        }else {
+        } else {
             this.computeCartTotals();
         }
     }
@@ -143,13 +143,13 @@ export class CartService {
         const itemIndex = this.cartItems.findIndex(tempCartItem => tempCartItem.id === theCartItem.id);
 
         //if found, remove the item from the array at the given index
-        if(itemIndex > -1){
+        if (itemIndex > -1) {
             this.cartItems.splice(itemIndex, 1);
             this.computeCartTotals();
         }
     }
 
-    persistCartItems(){
+    persistCartItems() {
         this.storage.setItem('cartItems', JSON.stringify(this.cartItems));
     }
 }

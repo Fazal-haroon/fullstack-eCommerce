@@ -68,7 +68,8 @@
                         <div class="col-md-9">
                             <div class="input-space">
                                 <select formControlName="country" (change)="getStates('shippingAddress')">
-                                    <option *ngFor="let country of countries" [ngValue]="country">{{country.name}}</option>
+                                    <option *ngFor="let country of countries"
+                                            [ngValue]="country">{{country.name}}</option>
                                 </select>
                                 <div *ngIf="getShippingAddressCountry.invalid && (getShippingAddressCountry.dirty || getShippingAddressCountry.touched)"
                                      class="alert alert-danger mt-1">
@@ -118,7 +119,8 @@
                         <div class="col-md-9">
                             <div class="input-space">
                                 <select formControlName="state">
-                                    <option *ngFor="let state of shippingAddressStates" [ngValue]="state">{{state.name}}</option>
+                                    <option *ngFor="let state of shippingAddressStates"
+                                            [ngValue]="state">{{state.name}}</option>
                                 </select>
                                 <div *ngIf="getShippingAddressState.invalid && (getShippingAddressState.dirty || getShippingAddressState.touched)"
                                      class="alert alert-danger mt-1">
@@ -164,7 +166,8 @@
                         <div class="col-md-9">
                             <div class="input-space">
                                 <select formControlName="country" (change)="getStates('billingAddress')">
-                                    <option *ngFor="let country of countries" [ngValue]="country">{{country.name}}</option>
+                                    <option *ngFor="let country of countries"
+                                            [ngValue]="country">{{country.name}}</option>
                                 </select>
                                 <div *ngIf="getBillingAddressCountry.invalid && (getBillingAddressCountry.dirty || getBillingAddressCountry.touched)"
                                      class="alert alert-danger mt-1">
@@ -214,7 +217,8 @@
                         <div class="col-md-9">
                             <div class="input-space">
                                 <select formControlName="state">
-                                    <option *ngFor="let state of billingAddressStates" [ngValue]="state">{{state.name}}</option>
+                                    <option *ngFor="let state of billingAddressStates"
+                                            [ngValue]="state">{{state.name}}</option>
                                 </select>
                                 <div *ngIf="getBillingAddressState.invalid && (getBillingAddressState.dirty || getBillingAddressState.touched)"
                                      class="alert alert-danger mt-1">
